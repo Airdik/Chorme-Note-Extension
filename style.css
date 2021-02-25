@@ -1,0 +1,364 @@
+*{
+    margin: 0;
+    padding: 0;
+    /* border: 1px solid red;    For debugging styles */
+}
+html{
+    color: #000;
+    margin: 0;
+}
+div{
+    margin: 0;
+    padding: 0;
+}
+
+html, body{
+    color: #000;
+    width: 250px;
+    height: 300;
+    text-align: center;
+}
+body{
+    width: 100%;
+    background-color: '#fff6c3';
+
+}
+::placeholder{
+    opacity: .6;
+    font-size: 14px;
+}
+
+#title{
+    margin: 0;
+    color: white;
+    font-weight: 900;
+    font-size: 24px;
+    width: 100%;
+    height: 12.5%;
+    background-color: #ffaca9;
+    user-select: none;
+    /* border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px; */
+}
+
+.btn {
+    outline: none;
+  background-color: rgba(30, 143, 255, 0); /* Blue background */
+  border: none; /* Remove borders */
+  color: rgb(248, 248, 248); /* White text */
+  padding: 0px 5px; /* Some padding */
+  font-size: 26px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+}
+
+
+#spanOne{
+    color: rgb(255, 246, 195);
+}
+#spanTwo{
+    color: rgb(107, 224, 142);
+}
+#spanThree{
+    color: rgb(255, 0, 0);
+}
+
+#noteArea{
+    margin: 0;
+    padding: 0;
+    resize: none;
+    outline: none;
+    background-color: #fff6c3;
+    border: none;
+    width: 244px;
+    height: 263px;
+    font-size: 14px;
+    font-weight: 0;
+    padding-left: 3px;
+    overflow-x: hidden;
+    /* white-space: pre; */
+}
+textarea::-webkit-scrollbar {
+    width: 3px;
+}
+/* textarea::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+} */
+textarea::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px     rgb(192, 192, 192); 
+  /* outline: 1px solid slategrey; */
+}
+
+
+textarea::-webkit-scrollbar-thumb:hover{
+    cursor: pointer;
+}
+textarea::-webkit-scrollbar:hover {
+    cursor: pointer;
+}
+.btn:hover {
+  transition: .5s;
+}
+.fa-home:hover{
+    color: rgb(255, 238, 0);
+    transition: .5s;
+
+}
+.fa-trash:hover{
+    color: #ff4d4d;
+    transition: .5s;
+
+}
+.fa-save:hover{
+    color: #6be08e;
+    transition: .5s;
+
+}
+.fa-download:hover{
+    color: #88b3ff;
+    transition: .5s;
+
+}
+.fa-cog:hover{
+    color: #adadad;
+    transition: .5s;
+
+}
+.fa-plus:hover{
+    color: #6be08e;
+    transition: .5s;
+}
+.fa-info:hover{
+    color: #00ccff;
+    transition: .5s;
+}
+
+
+/* HOME */
+#allNotesArea {
+    margin: 0;
+    padding: 0;
+    resize: none;
+    outline: none;
+    background-color: #fff6c3;
+    border: none;
+    width: 244px;
+    height: 266px;
+    font-size: 16px;
+    margin-left: 3px;
+    text-align: left;
+    overflow: auto;
+
+}
+
+.homeNote{
+    text-align:left;
+    color: #ff9995;    
+    font-weight: 600;
+}
+
+.note-holder{
+    display: flex;
+    user-select: none;
+    padding: 3px;
+    padding-left: 5px;
+
+    margin-top: 5px;
+    background-color:#ffdfaf;
+    border-radius: 5px;
+}
+.note-delete{
+    margin: 0;
+    color: #ffffff;
+    font-weight: 900;
+    font-size: 16px;
+    padding: 2px 8px;
+    background-color: #ffb87e;
+    border-radius: 5px;
+}
+.homeNote{
+    width: 92%;
+}
+
+#allNotesArea::-webkit-scrollbar {
+    width: 3px;
+}
+#allNotesArea::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px     #c0c0c0; 
+}
+
+.note-holder:hover{
+    cursor: pointer;
+    background-color: #ffd08a;
+}
+.note-delete:hover{
+    background-color: #ff6060;
+    color: yellow;
+    transition: .5s;
+}
+
+
+
+/* SETTINGS */
+#allSettingsArea{
+    margin: 0;
+    padding: 0;
+    resize: none;
+    outline: none;
+    background-color: #fff6c3;
+    border: none;
+    width: 244px;
+    height: 267px;
+    font-size: 16px;
+    padding-left: 3px;
+    text-align: left;
+    overflow: auto;
+    color: #808080;
+}
+
+.settings-title{
+    text-align: center;
+    margin-top: 3px;
+    font-weight: 800;
+    user-select: none;
+    color: #000000;
+}
+
+.setting-holder{
+    display: flex;
+    user-select: none;
+    padding: 3px;
+    padding-left: 5px;
+
+    margin-top: 5px;
+    background-color:#ffdfaf;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 500;
+}
+.theme-name, .reset-name, .font-name, .bold-name {
+    width: 100%;
+    text-align: center;
+    font-weight: 600;
+}
+
+#font-title, #bold-title {
+    margin-top: 15px;
+    
+}
+
+#reset-title {
+    margin-top:40px;
+}
+#resetHard{
+    margin-bottom: 10px;
+}
+
+
+
+.setting-holder:hover{
+    cursor: pointer;
+    background-color: #ffd08a;
+}
+#allSettingsArea::-webkit-scrollbar {
+    width: 0px;
+}
+#resetHard:hover{
+    background-color: #ff0000;
+    color: #ffff00;
+    transition: .2s;
+}
+
+
+
+
+/* INFORMATION */
+#allInfoArea{
+    margin: 0;
+    padding: 0;
+    resize: none;
+    outline: none;
+    background-color: #ffffff;
+    border: none;
+    width: 244px;
+    height: 267px;
+    font-size: 16px;
+    text-align: left;
+    overflow: auto;
+    color: #808080;
+}
+
+.information-title{
+    text-align: center;
+    margin-top: 3px;
+    font-weight: 700;
+    font-size: 16px;
+    user-select: none;
+    color: #000000;
+}
+#use-title{
+    margin-top:30px;
+}
+#use-body{
+    margin-top: 5px;
+    user-select: none;
+    padding-left: 5px;
+    font-size:14px;
+    color: #000;
+    font-weight: 500;
+}
+
+#donateButton{
+    margin: auto;
+    padding-left: 5px;
+    color: #fbfcff;
+    font-weight: 900;
+    text-decoration: none;
+   
+}
+.donate{
+    color: grey;
+    background-color: #84d862;
+    width: 50%;
+    padding: 5px;
+    border-radius: 15px;
+    font-weight: 900;
+}
+.donateMessage{
+    color: rgb(255, 156, 121);
+}
+.donate:hover{
+    background-color: #aff195;
+    transition: .5s;
+}
+
+#infoTitle{
+    margin: 0;
+    color: white;
+    font-weight: 900;
+    font-size: 24px;
+    width: 100%;
+    height: 12.5%;
+    background-color: #c7c7c7;
+    user-select: none;
+    /* border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px; */
+}
+
+.iconName{
+    font-weight: 900;
+}
+
+#copyright{
+    font-weight: 700;
+    text-align: center;
+    font-size: 14px;
+    user-select: none;
+}
+.lastItem{
+    margin-bottom: 10px;
+}
+#allInfoArea::-webkit-scrollbar {
+    width: 0px;
+}
