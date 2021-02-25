@@ -1,6 +1,7 @@
 /**
  * @author Erik Shrestha <eshrestha961@gmail.com>
  */
+var console = chrome.extension.getBackgroundPage().console;
 const home = document.getElementById('home');
 const downloadSingle = document.getElementById('downloadSingle');
 const saveNote = document.getElementById('saveNote');
@@ -11,7 +12,13 @@ const Body = document.getElementById('body-div');
 
 var currKey = '';
 
+
 const fnOnLoad = () => {
+
+    ////  Uncomment if want to save note ever x seconds instead of every time user presses a key
+    // const interval = setInterval(function () {
+    //     fnSaveNote();
+    // }, 500);
 
     // TITLE BAR COLOR
     chrome.storage.local.get('xTitleBar', function (data) {
@@ -203,3 +210,4 @@ downloadSingle.addEventListener('click', fnDownloadSingle);
 saveNote.addEventListener('click', fnSaveNote);
 settings.addEventListener('click', fnSwitchPage);
 noteArea.addEventListener('keydown', fnKeyPressed, false);
+noteArea.addEventListener('input', fnSaveNote); // Saving note on every key press
