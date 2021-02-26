@@ -1,7 +1,9 @@
 *{
     margin: 0;
     padding: 0;
+    tab-size: 3;
     /* border: 1px solid red;    For debugging styles */
+    
 }
 html{
     color: #000;
@@ -361,4 +363,49 @@ textarea::-webkit-scrollbar:hover {
 }
 #allInfoArea::-webkit-scrollbar {
     width: 0px;
+}
+
+
+
+
+
+.alert {
+    user-select: none;
+    margin:auto;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    right:0;
+    /* transform: translate(0%,-80%); */
+    transform: translate(0%, 100%);
+    background-color: #f1f1f1;
+    width: 92%;
+    height: 30%;
+    font-size: 18px;
+    font-weight: 900;
+    text-align: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 5px solid rgb(253, 99, 99);
+    padding: 5px;
+}
+
+.alertButtons{
+    width: 25%;
+    margin: 8px 5px;
+    margin-bottom: 1px;
+    border-radius: 10px;
+    background-color: rgb(250, 241, 121);
+    outline: none;
+    padding: 3px;
+    font-Weight:900;
+
+}
+.alertButtons:hover{
+    cursor: pointer;
+    background-color: rgb(226, 214, 48);
+}
+
+.alertButtonsHolder{
+    margin: 0;
 }

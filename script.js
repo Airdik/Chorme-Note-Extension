@@ -199,7 +199,7 @@ const fnDownloadSingle = () => {
 // When the tab key is pressed
 const fnKeyPressed = (evt) => {
     if (evt.keyCode == "9") {
-        noteArea.value += '   ';
+        noteArea.value += "\t";
     }
 }
 
