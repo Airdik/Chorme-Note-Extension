@@ -367,7 +367,9 @@ textarea::-webkit-scrollbar:hover {
 
 
 
-
+#hardResetAlert{
+    visibility: hidden;
+}
 
 .alert {
     user-select: none;

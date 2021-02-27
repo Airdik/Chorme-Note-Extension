@@ -8,6 +8,9 @@ const allSettingsArea = document.getElementById('allSettingsArea');
 const settingsTitle = document.getElementsByClassName('settings-title');
 const noteHolder = document.getElementsByClassName('note-holder');
 const numOFStatic = 5;
+const btnResetYes = document.getElementById('btnResetYes');
+const btnResetNo = document.getElementById('btnResetNo');
+const hardResetAlert = document.getElementById('hardResetAlert');
 
 const fnOnLoad = () => {
 
@@ -174,21 +177,42 @@ document.querySelectorAll('.reset').forEach(item => {
 
         console.log('Reset...')
         if (id === 'resetHard') {
-            chrome.storage.local.clear(() => { console.log('Hard reset...') })
-        }
-        //Theme reset
-        chrome.storage.local.set({ 'xTitleBar': '#ffaca9' }, () => { });
-        chrome.storage.local.set({ 'xBody': '#fff6c3' }, () => { });
-        //Font size reset
-        chrome.storage.local.set({ 'xFontSize': '14px' }, () => { });
-        //Font weight reset
-        chrome.storage.local.set({ 'xFontBold': 0 }, () => { });
+            hardResetAlert.style.visibility = 'visible';
 
-        location.reload();
-        return false;
+        }
+        else
+        {
+            //Theme reset
+            chrome.storage.local.set({ 'xTitleBar': '#ffaca9' }, () => { });
+            chrome.storage.local.set({ 'xBody': '#fff6c3' }, () => { });
+            //Font size reset
+            chrome.storage.local.set({ 'xFontSize': '14px' }, () => { });
+            //Font weight reset
+            chrome.storage.local.set({ 'xFontBold': 0 }, () => { });
+            location.reload();
+            return false;
+
+        }
+
+
     });
 })
 
 fnOnLoad();
 
 downloadAll.addEventListener('click', fnDownloadAll);
+btnResetYes.addEventListener('click', ()=> {
+    chrome.storage.local.clear(() => { console.log('Hard reset...') })
+    //Theme reset
+    chrome.storage.local.set({ 'xTitleBar': '#ffaca9' }, () => { });
+    chrome.storage.local.set({ 'xBody': '#fff6c3' }, () => { });
+    //Font size reset
+    chrome.storage.local.set({ 'xFontSize': '14px' }, () => { });
+    //Font weight reset
+    chrome.storage.local.set({ 'xFontBold': 0 }, () => { });
+    hardResetAlert.style.visibility = 'hidden';
+    location.reload();
+})
+btnResetNo.addEventListener('click', () => { 
+    hardResetAlert.style.visibility = 'hidden';
+})

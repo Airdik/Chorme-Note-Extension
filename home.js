@@ -4,6 +4,9 @@ const allNotesArea = document.getElementById('allNotesArea');
 const numOFStatic = 5; // num of things in array to not count such as default keys to determine if the array is actually empty 
 const titleBar = document.getElementById('title');
 const Body = document.getElementById('body');
+const btnResetYes = document.getElementById('btnResetYes');
+const btnResetNo = document.getElementById('btnResetNo');
+const hardResetAlert = document.getElementById('hardResetAlert');
 
 const fnOnLoad = () => {
     //Background color
@@ -18,21 +21,8 @@ const fnOnLoad = () => {
 }
 
 const fnDeleteAll = () => {
+    hardResetAlert.style.visibility = 'visible';
 
-    chrome.storage.local.get(null, function (items) {
-        // Stores an array of all of the keys/value pairs
-        let allKeys = Object.entries(items);
-        allKeys.forEach(function (row) {
-            let item = row[0];
-            
-            if (row[0] != 'NotesCount' && !(row[0].startsWith('x'))) {
-                console.log('Removing Key:', item);
-                chrome.storage.local.remove([item], ()=>{});
-            }
-        });
-        location.reload();
-        return false;
-    });
 }
 
 const fnLoadNotes = () => {
@@ -173,3 +163,24 @@ fnOnLoad();
 
 downloadAll.addEventListener('click', fnDownloadAll);
 deleteAll.addEventListener('click', fnDeleteAll);
+
+btnResetYes.addEventListener('click', () => {
+    chrome.storage.local.get(null, function (items) {
+        // Stores an array of all of the keys/value pairs
+        let allKeys = Object.entries(items);
+        allKeys.forEach(function (row) {
+            let item = row[0];
+
+            if (row[0] != 'NotesCount' && !(row[0].startsWith('x'))) {
+                console.log('Removing Key:', item);
+                chrome.storage.local.remove([item], () => { });
+            }
+        });
+        location.reload();
+        return false;
+    });
+});
+
+btnResetNo.addEventListener('click', () => {
+    hardResetAlert.style.visibility = 'hidden';
+})
