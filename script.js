@@ -102,7 +102,7 @@ const fnOnLoad = () => {
 
 const fnSwitchPage = (evt) => {
 
-    fnSaveNote();
+    //fnSaveNote(); no need to save since now the note is saved on each key press
     if (evt.target.id === 'home') {
         
         window.location.pathname = 'home.html';
