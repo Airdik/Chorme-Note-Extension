@@ -51,7 +51,7 @@ const fnOnLoad = () => {
 
 const fnDownloadAll = () => {
     var fullNotesToDownload = '';
-
+    
     chrome.storage.local.get(null, function (items) {
         // Stores an array of all of the keys/value pairs
         var allKeys = Object.entries(items);
@@ -157,7 +157,6 @@ document.querySelectorAll('.bold').forEach(item => {
         console.log(id == 'fontBolder');
         if (id === 'fontBold') {
             chrome.storage.local.set({ 'xFontBold': 700 }, () => { });
-
         } else if (id === 'fontBolder') {
             chrome.storage.local.set({ 'xFontBold': 900 }, () => { });
 
@@ -193,8 +192,6 @@ document.querySelectorAll('.reset').forEach(item => {
             return false;
 
         }
-
-
     });
 })
 

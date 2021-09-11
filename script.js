@@ -98,6 +98,8 @@ const fnOnLoad = () => {
             console.log('Creating new note')
         }
     });
+
+    noteArea.focus(); // Focusing on to the note area automatically
 }
 
 const fnSwitchPage = (evt) => {
@@ -167,6 +169,9 @@ const fnSaveNote = () => {
             });
         } else {
             console.log('Nothing to save');
+            chrome.storage.local.remove(currKey, function () {
+                console.log('Deleted empty note');
+            });
         }
     }
 }
@@ -200,6 +205,8 @@ const fnDownloadSingle = () => {
 const fnKeyPressed = (evt) => {
     if (evt.keyCode == "9") {
         noteArea.value += "\t";
+    } else if (evt.keyCode == "8") {
+        fnSaveNote();
     }
 }
 

@@ -21,7 +21,9 @@ const fnOnLoad = () => {
 }
 
 const fnDeleteAll = () => {
-    hardResetAlert.style.visibility = 'visible';
+    if (document.getElementsByClassName('note-holder').length > 0) { // Display message to delete all notes only if there are notes 
+        hardResetAlert.style.visibility = 'visible';
+    }
 
 }
 
