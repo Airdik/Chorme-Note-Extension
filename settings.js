@@ -1,6 +1,8 @@
 /**
- * @author Erik Shrestha <eshrestha961@gmail.com>
+ * @author Airdik <eshrestha961@gmail.com>
+ * Github: https://github.com/Airdik
  */
+
 const downloadAll = document.getElementById('downloadAll');
 const titleBar = document.getElementById('title');
 const Body = document.getElementById('body');

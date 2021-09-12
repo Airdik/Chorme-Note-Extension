@@ -1,10 +1,12 @@
 /**
- * @author Erik Shrestha <eshrestha961@gmail.com>
+ * @author Airdik <eshrestha961@gmail.com>
+ * Github: https://github.com/Airdik
  */
+
 var console = chrome.extension.getBackgroundPage().console;
 const home = document.getElementById('home');
 const downloadSingle = document.getElementById('downloadSingle');
-const saveNote = document.getElementById('saveNote');
+const shareNote = document.getElementById('shareNote');
 const settings = document.getElementById('settings');
 const noteArea = document.getElementById('noteArea');
 const titleBar = document.getElementById('title');
@@ -92,14 +94,12 @@ const fnOnLoad = () => {
             // Clearing the ACTIVEID after currKey has been set
             chrome.storage.local.remove("ACTIVEID", function () {
                 console.log('ACTIVEID has been reset');
-
             });
         } else { 
             console.log('Creating new note')
         }
     });
-
-    noteArea.focus(); // Focusing on to the note area automatically
+    noteArea.focus(); // Focusing on to the note area automatically, so user can start writing right away instead of having to click on the note area first
 }
 
 const fnSwitchPage = (evt) => {
@@ -200,7 +200,18 @@ const fnDownloadSingle = () => {
     }
 }
 
+const fnShareNote = () => {
+    let note = `${noteArea.value}`;
 
+    if (!(note.trim() === '')) {
+        window.location.href = encodeURI(
+`mailto:${""}?subject=${""}&body=
+${note}
+
+Sent with NoteIT
+        `);
+    }
+}
 // When the tab key is pressed
 const fnKeyPressed = (evt) => {
     if (evt.keyCode == "9") {
@@ -214,7 +225,7 @@ fnOnLoad();
 
 home.addEventListener('click', fnSwitchPage)
 downloadSingle.addEventListener('click', fnDownloadSingle);
-saveNote.addEventListener('click', fnSaveNote);
+shareNote.addEventListener('click', fnShareNote);
 settings.addEventListener('click', fnSwitchPage);
 noteArea.addEventListener('keydown', fnKeyPressed, false);
 noteArea.addEventListener('input', fnSaveNote); // Saving note on every key press

@@ -1,3 +1,10 @@
+/**
+ * @author Airdik <eshrestha961@gmail.com>
+ * Github: https://github.com/Airdik
+ */
+
+// Does not do anything as of now, just a proof of concept
+
 chrome.runtime.onConnect.addListener(function (port) {
     if (port.name === "popup") {
         port.onDisconnect.addListener(function () {

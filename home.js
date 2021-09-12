@@ -1,3 +1,8 @@
+/**
+ * @author Airdik <eshrestha961@gmail.com>
+ * Github: https://github.com/Airdik
+ */
+
 const downloadAll = document.getElementById('downloadAll');
 const deleteAll = document.getElementById('deleteAll');
 const allNotesArea = document.getElementById('allNotesArea');
