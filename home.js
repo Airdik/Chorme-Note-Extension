@@ -190,4 +190,4 @@ btnResetYes.addEventListener('click', () => {
 
 btnResetNo.addEventListener('click', () => {
     hardResetAlert.style.visibility = 'hidden';
-})
+});

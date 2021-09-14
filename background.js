@@ -18,6 +18,7 @@ chrome.runtime.onConnect.addListener(function (port) {
     }
 });
 
+
 chrome.runtime.onMessage.addListener(function (req, sender, res) {
     console.log(req)
 });

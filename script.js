@@ -208,8 +208,9 @@ const fnShareNote = () => {
 `mailto:${""}?subject=${""}&body=
 ${note}
 
-Sent with NoteIT
-        `);
+
+
+Made with NoteIT`);
     }
 }
 // When the tab key is pressed
