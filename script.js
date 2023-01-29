@@ -3,7 +3,6 @@
  * Github: https://github.com/Airdik
  */
 
-var console = chrome.extension.getBackgroundPage().console;
 const home = document.getElementById('home');
 const downloadSingle = document.getElementById('downloadSingle');
 const shareNote = document.getElementById('shareNote');
@@ -23,18 +22,18 @@ const fnOnLoad = () => {
     // }, 500);
 
     // TITLE BAR COLOR
-    chrome.storage.local.get('xTitleBar', function (data) {
+    chrome.storage.sync.get('xTitleBar', function (data) {
         if (typeof data.xTitleBar === 'undefined') { // If there is no value
-            chrome.storage.local.set({'xTitleBar': '#ffaca9'}, () => { })
+            chrome.storage.sync.set({'xTitleBar': '#ffaca9'}, () => { })
         } else { // if not set then set it 
             titleBar.style.backgroundColor = `${data.xTitleBar}`;
         }
     });
 
     //Background color
-    chrome.storage.local.get('xBody', function (data) {
+    chrome.storage.sync.get('xBody', function (data) {
         if (typeof data.xBody === 'undefined') { // If there is no value
-            chrome.storage.local.set({ 'xBody': '#fff6c3' }, () => { })
+            chrome.storage.sync.set({ 'xBody': '#fff6c3' }, () => { })
         } else { // If there is a key with a value
             Body.style.backgroundColor = `${data.xBody}`;
             noteArea.style.backgroundColor = `${data.xBody}`;
@@ -43,11 +42,11 @@ const fnOnLoad = () => {
     });
 
     //Font Size
-    chrome.storage.local.get('xFontSize', function (data) {
+    chrome.storage.sync.get('xFontSize', function (data) {
         if (typeof data.xFontSize === 'undefined') { // If there is no value
             console.log('No Font Size found');
-            chrome.storage.local.set({ 'xFontSize': '14px' }, () => { });
-            chrome.storage.local.get('xFontSize', function (data) {
+            chrome.storage.sync.set({ 'xFontSize': '14px' }, () => { });
+            chrome.storage.sync.get('xFontSize', function (data) {
                 noteArea.style.fontSize = `${data.xFontSize}`;
             });
             
@@ -58,11 +57,11 @@ const fnOnLoad = () => {
     });
 
     //Font Bold
-    chrome.storage.local.get('xFontBold', function (data) {
+    chrome.storage.sync.get('xFontBold', function (data) {
         if (typeof data.xFontBold === 'undefined') { // If there is no value
             console.log('No Font weight found');
-            chrome.storage.local.set({ 'xFontBold': '0' }, () => { });
-            chrome.storage.local.get('xFontBold', function (data) {
+            chrome.storage.sync.set({ 'xFontBold': '0' }, () => { });
+            chrome.storage.sync.get('xFontBold', function (data) {
                 noteArea.style.fontWeight = `${data.xFontBold}`;
                 console.log('Setting font weight:', data.xFontBold);
             });
@@ -84,7 +83,7 @@ const fnOnLoad = () => {
             currKey = allKeys[0][1];
 
             //Setting the note area as the value that is saved with the key
-            chrome.storage.local.get([currKey], function (items) {
+            chrome.storage.sync.get([currKey], function (items) {
                 let allKeys = Object.entries(items);
                 console.log('actualNote:', allKeys[0][1]);
                 let note = allKeys[0][1];
@@ -118,19 +117,19 @@ const fnSaveNote = () => {
     if (currKey === '') { //Meaning we are saving a new note
         var noteIncNum = 0;
 
-        chrome.storage.local.get("NotesCount", function (items) {
+        chrome.storage.sync.get("NotesCount", function (items) {
             let allKeys = Object.entries(items);
 
             if (allKeys.length > 0) { // If an existing NotesCount Key exists
-                chrome.storage.local.get('NotesCount', (items) => {
+                chrome.storage.sync.get('NotesCount', (items) => {
                     let allKeys = Object.entries(items);
 
                     let note = `${noteArea.value}`;
                     
                     if (!(note.trim() === '')) {
                         noteIncNum = (parseInt(allKeys[0][1]) + 1);
-                        chrome.storage.local.set({ 'NotesCount': [noteIncNum] }, () => { });
-                        chrome.storage.local.set({ [noteIncNum]: note }, function () {
+                        chrome.storage.sync.set({ 'NotesCount': [noteIncNum] }, () => { });
+                        chrome.storage.sync.set({ [noteIncNum]: note }, function () {
 
                             currKey = noteIncNum;
                         
@@ -149,9 +148,9 @@ const fnSaveNote = () => {
 
                 if (!(note.trim() === '')) {
                     console.log('No previous notes found')
-                    chrome.storage.local.set({ 'NotesCount': 1 }, () => { });
+                    chrome.storage.sync.set({ 'NotesCount': 1 }, () => { });
 
-                    chrome.storage.local.set({ 1: note }, function () {
+                    chrome.storage.sync.set({ 1: note }, function () {
                         currKey = 1;
                     });
                 } else {
@@ -165,7 +164,7 @@ const fnSaveNote = () => {
         let note = `${noteArea.value}`;
 
         if (!(note.trim() === '')) {
-            chrome.storage.local.set({ [currKey]: note }, function () {
+            chrome.storage.sync.set({ [currKey]: note }, function () {
             });
         } else {
             console.log('Nothing to save');

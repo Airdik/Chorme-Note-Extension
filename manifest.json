@@ -1,20 +1,26 @@
 {
-    "manifest_version": 2,
-    "name": "NoteIT",
-    "description": "Easy way to jot down your ideas.",
-    "permissions": ["activeTab", "storage"],
+    "manifest_version": 3,
+    "name": "NoteIT - Modern Sticky Notes App",
+    "description": "Easily jot down and save your ideas.",
+    "permissions": ["activeTab", "tabs", "storage"],
     
-    "version": "4.1.1",
+    "version": "4.2.0",
     "icons": {
         "128": "icon_128.png",
         "48": "icon_48.png",
         "16": "icon_16.png"
     },
-    "browser_action": {
-        "default_icon": "icon.png",
+    "action": {
+        "default_icon":{
+            "16":"icon.png",
+            "24":"icon.png",
+            "32":"icon.png"
+        },
+        "default_title": "NoteIT",
         "default_popup": "popup.html"
     },
-    "background":{
-        "scripts": ["background.js"]
+    "host_permissions": ["http://*/*"],
+    "background": {
+        "service_worker": "background.js"
     }
 }

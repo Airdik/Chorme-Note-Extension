@@ -15,7 +15,7 @@ const hardResetAlert = document.getElementById('hardResetAlert');
 
 const fnOnLoad = () => {
     //Background color
-    chrome.storage.local.get('xBody', function (data) {
+    chrome.storage.sync.get('xBody', function (data) {
         if (typeof data.xBody === 'undefined') { // If there is no value
 
         } else { // If there is a key with a value
@@ -33,7 +33,7 @@ const fnDeleteAll = () => {
 }
 
 const fnLoadNotes = () => {
-    chrome.storage.local.get(null, function (items) {
+    chrome.storage.sync.get(null, function (items) {
         // Stores an array of all of the keys/value pairs
         var allKeys = Object.entries(items);
 
@@ -71,7 +71,7 @@ const fnLoadNotes = () => {
         let noteHolder = document.getElementsByClassName('homeNote');
 
         // TITLE BAR COLOR
-        chrome.storage.local.get('xTitleBar', function (data) {
+        chrome.storage.sync.get('xTitleBar', function (data) {
             if (typeof data.xTitleBar === 'undefined') { // If there is no value
 
             } else { // if not set then set it 
@@ -96,7 +96,7 @@ const fnHomeNoteClick = (evt) => {
         });
     } else if (evt.target.classList[0] === 'note-delete') {
         // Delete the selected note
-        chrome.storage.local.remove(evt.target.id, function () {
+        chrome.storage.sync.remove(evt.target.id, function () {
             console.log('Note deleted:', evt.target.id);
             window.location.pathname = 'home.html';
         });
@@ -106,7 +106,7 @@ const fnHomeNoteClick = (evt) => {
 const fnDownloadAll = () => {
     var fullNotesToDownload = '';
 
-    chrome.storage.local.get(null, function (items) {
+    chrome.storage.sync.get(null, function (items) {
         // Stores an array of all of the keys/value pairs
         var allKeys = Object.entries(items);
         console.log('# of all notes:', allKeys.length);
@@ -172,7 +172,7 @@ downloadAll.addEventListener('click', fnDownloadAll);
 deleteAll.addEventListener('click', fnDeleteAll);
 
 btnResetYes.addEventListener('click', () => {
-    chrome.storage.local.get(null, function (items) {
+    chrome.storage.sync.get(null, function (items) {
         // Stores an array of all of the keys/value pairs
         let allKeys = Object.entries(items);
         allKeys.forEach(function (row) {
@@ -180,7 +180,7 @@ btnResetYes.addEventListener('click', () => {
 
             if (row[0] != 'NotesCount' && !(row[0].startsWith('x'))) {
                 console.log('Removing Key:', item);
-                chrome.storage.local.remove([item], () => { });
+                chrome.storage.sync.remove([item], () => { });
             }
         });
         location.reload();
